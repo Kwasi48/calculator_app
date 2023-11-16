@@ -6,6 +6,24 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 2,
+        title: const Text('Add Up'),
+        centerTitle: true,
+      ),
+      body: const SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+              'Work in progress',
+              ),
+              CircularProgressIndicator(),]
+          )
+        ),
+      ),
+    );
   }
 }
