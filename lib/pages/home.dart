@@ -27,7 +27,15 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Expanded(child: Container(
                 child: Column(
-
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      color: Colors.grey,
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.all(30),
+                      child: Text(userInput),
+                    )
+                  ],
                 ),
               ))
                 ]
