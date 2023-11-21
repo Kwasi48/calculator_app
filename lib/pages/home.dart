@@ -11,6 +11,26 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String userInput = '';
   String  answer = '';
+  List<String> buttons = ['C',
+  '+/-',
+  '%',
+  'DEL',
+  '7',
+  '8',
+  '9',
+  '/',
+  '4',
+  '5',
+  '6',
+  'x',
+  '1',
+  '2',
+  '3',
+  '-',
+  '0',
+  '.',
+  '=',
+  '+',];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +54,25 @@ class _HomeState extends State<Home> {
                       alignment: Alignment.centerRight,
                       padding: EdgeInsets.all(30),
                       child: Text(userInput),
-                    )
+                    ),
+                    SizedBox(height: 7,),
+                    Container(
+                      color: Colors.grey,
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.all(25),
+                      child: Text(answer, style: TextStyle(
+                        fontSize: 14, fontWeight:FontWeight.bold
+                      ),),
+                    ),
+                    Expanded(
+                      flex: 3,
+                        child: GridView.builder(
+                          itemCount: buttons.length,
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount( crossAxisCount: 4),
+                            itemBuilder: (BuildContext context, int index){
+                            if ( index == 0){
+                            }
+                            }))
                   ],
                 ),
               ))
