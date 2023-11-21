@@ -9,6 +9,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String userInput = '';
+  String  answer = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,15 +20,17 @@ class _HomeState extends State<Home> {
         title: const Text('Add Up'),
         centerTitle: true,
       ),
-      body: const SafeArea(
+      body:  SafeArea(
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-              'Work in progress',
-              ),
-              CircularProgressIndicator(),]
+            children: <Widget>[
+              Expanded(child: Container(
+                child: Column(
+
+                ),
+              ))
+                ]
           )
         ),
       ),
