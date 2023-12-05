@@ -90,7 +90,7 @@ class _HomeState extends State<Home> {
                                  buttonText: buttons[index],
                                 color: Colors.blue[50],
                                 textColor: Colors.black
-                              )
+                              );
                             }
                             // % button
                             else if (index == 2){
@@ -104,6 +104,19 @@ class _HomeState extends State<Home> {
                                 color: Colors.blue[50],
                                 textColor: Colors.black,
                               );
+                            }
+                            //Delete Button
+                              else if(index == 3){
+                                return MyButton(
+                                  buttontapped: () {
+                                    setState(() {
+                                      userInput = userInput.substring(0, userInput.length -1 );
+                                    });
+                                  },
+                                  buttonText: buttons[index],
+                                  color: Colors.blue[50],
+                                  textColor: Colors.black,
+                                );
                             }
                             }))
                   ],
