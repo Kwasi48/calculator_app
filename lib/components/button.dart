@@ -15,7 +15,21 @@ class MyButton extends StatelessWidget {
       onTap: buttontapped,
       child: Padding(
         padding: EdgeInsets.all(0.2),
-      ),
+      child: ClipRRect(
+        child: Container(
+          color: color,
+          child: Center(
+            child: Text(
+              buttonText,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 25,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
+        ),
+      ),),
     );
   }
 }
