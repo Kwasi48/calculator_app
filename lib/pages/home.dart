@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../components/button.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 
 class Home extends StatefulWidget {
@@ -73,14 +75,14 @@ class _HomeState extends State<Home> {
                             // clear Button
                             if ( index == 0){
                               return MyButton(
-                                bottontapped:(){
+                                buttontapped:(){
                                   setState(() {
                                     userInput = '';
                                     answer = '0';
                                   });
                                 },
                                 buttonText: buttons[index],
-                                color: Colors.blue[500],
+                                color: Colors.blue,
                                 textColor: Colors.black,
                               );
                             }
@@ -88,7 +90,7 @@ class _HomeState extends State<Home> {
                             else if (index == 1){
                               return MyButton(
                                  buttonText: buttons[index],
-                                color: Colors.blue[50],
+                                color: Colors.blue,
                                 textColor: Colors.black
                               );
                             }
@@ -101,7 +103,7 @@ class _HomeState extends State<Home> {
                                   });
                                 },
                                 buttonText: buttons[index],
-                                color: Colors.blue[50],
+                                color: Colors.blue,
                                 textColor: Colors.black,
                               );
                             }
@@ -114,11 +116,35 @@ class _HomeState extends State<Home> {
                                     });
                                   },
                                   buttonText: buttons[index],
-                                  color: Colors.blue[50],
+                                  color: Colors.blue,
                                   textColor: Colors.black,
                                 );
                             }
-                            }))
+                              else if (index == 18){
+                                return MyButton(
+                                  buttontapped: (){
+                                    setState(() {
+                                      equalPressed();
+                                    });
+                                  },
+                                  buttonText: buttons[index],
+                                  color: Colors.orangeAccent,
+                                  textColor: Colors.white,
+                                );
+                            }
+                              else {
+                                return MyButton(
+                                  buttontapped: (){
+                                    setState(() {
+                                      userInput += buttons[index];
+                                    });
+                                  },
+                                  buttonText: buttons[index],
+                                  color: isOperator(buttons[index]) ? Colors.blueAccent : Colors.white,
+                                  textColor: isOperator(buttons[index]) ? Colors.white : Colors.black,
+                                );
+                            }
+                            }),)
                   ],
                 ),
               ))
@@ -128,4 +154,24 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+  bool isOperator(String x){
+    if (x == '/' || x == 'x' || x == '+'|| x == '='){
+      return true;
+    }
+    return false;
+  }
+
+  void equalPressed(){
+    String finaluserinput = userInput;
+    finaluserinput = userInput.replaceAll('x', '*');
+
+    Parser p = Parser();
+    Expression exp = p.parse(finaluserinput);
+    ContextModel cm = ContextModel();
+    double eval = exp.evaluate(EvaluationType.REAL, cm);
+    answer = eval.toString();
+
+  }
+
 }
+
