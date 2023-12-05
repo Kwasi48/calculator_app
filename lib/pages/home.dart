@@ -70,7 +70,40 @@ class _HomeState extends State<Home> {
                           itemCount: buttons.length,
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount( crossAxisCount: 4),
                             itemBuilder: (BuildContext context, int index){
+                            // clear Button
                             if ( index == 0){
+                              return MyButton(
+                                bottontapped:(){
+                                  setState(() {
+                                    userInput = '';
+                                    answer = '0';
+                                  });
+                                },
+                                buttonText: buttons[index],
+                                color: Colors.blue[500],
+                                textColor: Colors.black,
+                              );
+                            }
+                            //+/- button
+                            else if (index == 1){
+                              return MyButton(
+                                 buttonText: buttons[index],
+                                color: Colors.blue[50],
+                                textColor: Colors.black
+                              )
+                            }
+                            // % button
+                            else if (index == 2){
+                              return MyButton(
+                                buttontapped: () {
+                                  setState(() {
+                                    userInput += buttons[index];
+                                  });
+                                },
+                                buttonText: buttons[index],
+                                color: Colors.blue[50],
+                                textColor: Colors.black,
+                              );
                             }
                             }))
                   ],
